@@ -75,10 +75,10 @@ body {
          transition: .2s ease;
          cursor: pointer;
          &.opened {
-            box-shadow: 0 0 0 2px $primaryColor;
+            box-shadow: 0 0 0 2px $secondaryColor;
          }
          &:hover {
-            box-shadow: 0 0 0 2px $primaryColor;
+            box-shadow: 0 0 0 2px $secondaryColor;
          }
          img {
             width: 100%;
@@ -143,7 +143,7 @@ body {
                   }
                }
                &:first-child {
-                  font-weight: 500;
+                  font-weight: bold;
                }
                a {
                   display: block;
@@ -193,7 +193,7 @@ body {
       box-shadow: 2px 4px 16px rgba(0,0,0,.16);
       header {
          position: relative;
-         padding: 15px;
+         padding: 25px;
          display: flex;
          justify-content: center;
          span {
@@ -202,6 +202,7 @@ body {
             cursor: pointer;
             width: 25px;
             height: 25px;
+            font-size: 1.3em;
             text-align: center;
             line-height: 25px;
             &:hover {
@@ -218,6 +219,8 @@ body {
          h3 {
             font-weight: normal;
             font-size: 120%;
+            padding: 15px 0;
+            text-align: center;
          }
       }
       .identifiants {
@@ -228,6 +231,10 @@ body {
          overflow: hidden;
          box-shadow: 0 0 0 1px #eee;
          position: relative;
+         margin-bottom: 10px;
+         &:last-child {
+            margin-bottom: 0px;
+         }
          span.valid,
          span.invalid {
             position: absolute;
@@ -244,11 +251,13 @@ body {
          span.invalid {
             opacity: .3;
          }
+         input[type=text],
          input[type=email],
+         input[type=tel],
          input[type=password] {
             background: #F6F6F6;
             font-family: Circular;
-            font-weight: 200;
+            font-weight: normal;
             padding-left: 15px;
             font-size: 1em;
             height: 40px;
@@ -257,7 +266,7 @@ body {
             transition: .2s ease;
             color: black;
             &:focus {
-               height: 50px;
+               // height: 50px;
                background: #f0f0f0;
             }
             &:first-child {
@@ -278,11 +287,16 @@ body {
             height: 40px;
             font-weight: normal;
             border: none;
+            outline: none;
             background: $primaryColor;
             color: white;
             cursor: pointer;
             transition: .2s ease;
-
+            &.disabled {
+               background: #eee !important;
+               color: #999;
+               cursor: default;
+            }
             &:hover {
                color: none;
             }
@@ -313,7 +327,7 @@ body {
          text-decoration: none;
          color: $bgColorDark;
          border: 1px solid #eee;
-         margin: 20px 30px;
+         margin: 30px;
          border-radius: 10px;
       }
    }

@@ -124,13 +124,13 @@ body {
 }
 
 .navigation-header section .member-icon.opened {
-  -webkit-box-shadow: 0 0 0 2px #fc5130;
-          box-shadow: 0 0 0 2px #fc5130;
+  -webkit-box-shadow: 0 0 0 2px #30bced;
+          box-shadow: 0 0 0 2px #30bced;
 }
 
 .navigation-header section .member-icon:hover {
-  -webkit-box-shadow: 0 0 0 2px #fc5130;
-          box-shadow: 0 0 0 2px #fc5130;
+  -webkit-box-shadow: 0 0 0 2px #30bced;
+          box-shadow: 0 0 0 2px #30bced;
 }
 
 .navigation-header section .member-icon img {
@@ -222,7 +222,7 @@ body {
 }
 
 .navigation-header section .menu ul li:first-child {
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .navigation-header section .menu ul li a {
@@ -280,7 +280,7 @@ body {
 .connexion-background .modal header,
 .inscription-background .modal header {
   position: relative;
-  padding: 15px;
+  padding: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -296,6 +296,7 @@ body {
   cursor: pointer;
   width: 25px;
   height: 25px;
+  font-size: 1.3em;
   text-align: center;
   line-height: 25px;
 }
@@ -320,6 +321,8 @@ body {
 .inscription-background .modal form h3 {
   font-weight: normal;
   font-size: 120%;
+  padding: 15px 0;
+  text-align: center;
 }
 
 .connexion-background .modal .identifiants,
@@ -337,6 +340,12 @@ body {
   -webkit-box-shadow: 0 0 0 1px #eee;
           box-shadow: 0 0 0 1px #eee;
   position: relative;
+  margin-bottom: 10px;
+}
+
+.connexion-background .modal .identifiants:last-child,
+.inscription-background .modal .identifiants:last-child {
+  margin-bottom: 0px;
 }
 
 .connexion-background .modal .identifiants span.valid,
@@ -363,13 +372,17 @@ body {
   opacity: .3;
 }
 
+.connexion-background .modal .identifiants input[type=text],
 .connexion-background .modal .identifiants input[type=email],
+.connexion-background .modal .identifiants input[type=tel],
 .connexion-background .modal .identifiants input[type=password],
+.inscription-background .modal .identifiants input[type=text],
 .inscription-background .modal .identifiants input[type=email],
+.inscription-background .modal .identifiants input[type=tel],
 .inscription-background .modal .identifiants input[type=password] {
   background: #F6F6F6;
   font-family: Circular;
-  font-weight: 200;
+  font-weight: normal;
   padding-left: 15px;
   font-size: 1em;
   height: 40px;
@@ -380,31 +393,46 @@ body {
   color: black;
 }
 
+.connexion-background .modal .identifiants input[type=text]:focus,
 .connexion-background .modal .identifiants input[type=email]:focus,
+.connexion-background .modal .identifiants input[type=tel]:focus,
 .connexion-background .modal .identifiants input[type=password]:focus,
+.inscription-background .modal .identifiants input[type=text]:focus,
 .inscription-background .modal .identifiants input[type=email]:focus,
+.inscription-background .modal .identifiants input[type=tel]:focus,
 .inscription-background .modal .identifiants input[type=password]:focus {
-  height: 50px;
   background: #f0f0f0;
 }
 
+.connexion-background .modal .identifiants input[type=text]:first-child,
 .connexion-background .modal .identifiants input[type=email]:first-child,
+.connexion-background .modal .identifiants input[type=tel]:first-child,
 .connexion-background .modal .identifiants input[type=password]:first-child,
+.inscription-background .modal .identifiants input[type=text]:first-child,
 .inscription-background .modal .identifiants input[type=email]:first-child,
+.inscription-background .modal .identifiants input[type=tel]:first-child,
 .inscription-background .modal .identifiants input[type=password]:first-child {
   border-bottom: 1px solid #eee;
 }
 
+.connexion-background .modal .identifiants input[type=text]:valid ~ span.valid,
 .connexion-background .modal .identifiants input[type=email]:valid ~ span.valid,
+.connexion-background .modal .identifiants input[type=tel]:valid ~ span.valid,
 .connexion-background .modal .identifiants input[type=password]:valid ~ span.valid,
+.inscription-background .modal .identifiants input[type=text]:valid ~ span.valid,
 .inscription-background .modal .identifiants input[type=email]:valid ~ span.valid,
+.inscription-background .modal .identifiants input[type=tel]:valid ~ span.valid,
 .inscription-background .modal .identifiants input[type=password]:valid ~ span.valid {
   opacity: 1;
 }
 
+.connexion-background .modal .identifiants input[type=text]:valid ~ span.invalid,
 .connexion-background .modal .identifiants input[type=email]:valid ~ span.invalid,
+.connexion-background .modal .identifiants input[type=tel]:valid ~ span.invalid,
 .connexion-background .modal .identifiants input[type=password]:valid ~ span.invalid,
+.inscription-background .modal .identifiants input[type=text]:valid ~ span.invalid,
 .inscription-background .modal .identifiants input[type=email]:valid ~ span.invalid,
+.inscription-background .modal .identifiants input[type=tel]:valid ~ span.invalid,
 .inscription-background .modal .identifiants input[type=password]:valid ~ span.invalid {
   opacity: 0;
 }
@@ -416,11 +444,19 @@ body {
   height: 40px;
   font-weight: normal;
   border: none;
-  background: #fc5130;
+  outline: none;
+  background: #de418f;
   color: white;
   cursor: pointer;
   -webkit-transition: .2s ease;
   transition: .2s ease;
+}
+
+.connexion-background .modal .identifiants input[type=submit].disabled,
+.inscription-background .modal .identifiants input[type=submit].disabled {
+  background: #eee !important;
+  color: #999;
+  cursor: default;
 }
 
 .connexion-background .modal .identifiants input[type=submit]:hover,
@@ -470,7 +506,7 @@ body {
   text-decoration: none;
   color: #303036;
   border: 1px solid #eee;
-  margin: 20px 30px;
+  margin: 30px;
   border-radius: 10px;
 }
 
@@ -543,16 +579,28 @@ body {
   background: black;
 }
 
+.bg-primary {
+  background: #de418f;
+}
+
+.bg-secondary {
+  background: #30bced !important;
+}
+
 .dark {
   color: #303036;
 }
 
 .primary {
-  color: #fc5130;
+  color: #de418f;
 }
 
 .secondary {
   color: #30bced;
+}
+
+.ucfirst {
+  text-transform: capitalize;
 }
 
 @-webkit-keyframes menuShow {

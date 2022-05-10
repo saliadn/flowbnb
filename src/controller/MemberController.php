@@ -1,7 +1,6 @@
 <?php
 
 require '../core/View.php';
-require '../core/Manager.php';
 
 class MemberController extends Manager {
    public function login() {

@@ -1,3 +1,3 @@
 <div class="container">
-   <h1>Connexion</h1>
+   <h1>Connectez-vous à votre compte.</h1>
 </div>

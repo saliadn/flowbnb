@@ -53,6 +53,12 @@
 .bg-black {
    background: black;
 }
+.bg-primary {
+   background: $primaryColor;
+}
+.bg-secondary {
+   background: $secondaryColor !important;
+}
 
 .dark {
    color: $bgColorDark;
@@ -62,4 +68,8 @@
 }
 .secondary {
    color: $secondaryColor;
+}
+
+.ucfirst {
+   text-transform: capitalize;
 }
