@@ -149,7 +149,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: white;
+  background: rgba(255, 250, 255, 0.7);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
   border-radius: 5px;
   border: 1px solid #eee;
   position: absolute;
@@ -211,6 +213,7 @@ body {
 
 .navigation-header section .menu ul li:hover {
   background: #f6f6f6;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .navigation-header section .menu ul li:hover a {
@@ -232,6 +235,7 @@ body {
 .navigation-header section .menu ul hr {
   border: none;
   background: #eee;
+  background: rgba(0, 0, 0, 0.1);
   height: 1px;
   width: 100%;
   margin: 10px 0;
@@ -239,12 +243,24 @@ body {
 
 .connexion-background,
 .inscription-background {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(48, 48, 54, 0.3);
+  background: rgba(48, 48, 54, 0.8);
   width: 100vw;
   height: 100vh;
+  opacity: 0;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.connexion-background.opened,
+.inscription-background.opened {
+  opacity: 1;
+  display: block;
+  -webkit-animation: menuShow .5s ease;
+          animation: menuShow .5s ease;
 }
 
 .connexion-background .modal,
@@ -256,7 +272,6 @@ body {
           transform: translate(-50%, -50%);
   background: white;
   width: 500px;
-  height: 650px;
   border-radius: 10px;
   -webkit-box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.16);
           box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.16);
@@ -299,6 +314,12 @@ body {
 .connexion-background .modal form,
 .inscription-background .modal form {
   padding: 30px;
+}
+
+.connexion-background .modal form h3,
+.inscription-background .modal form h3 {
+  font-weight: normal;
+  font-size: 120%;
 }
 
 .connexion-background .modal .identifiants,
@@ -395,7 +416,8 @@ body {
   height: 40px;
   font-weight: normal;
   border: none;
-  background: white;
+  background: #fc5130;
+  color: white;
   cursor: pointer;
   -webkit-transition: .2s ease;
   transition: .2s ease;
@@ -403,7 +425,53 @@ body {
 
 .connexion-background .modal .identifiants input[type=submit]:hover,
 .inscription-background .modal .identifiants input[type=submit]:hover {
-  color: #fc5130;
+  color: none;
+}
+
+.connexion-background .modal .modal-or,
+.inscription-background .modal .modal-or {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 0px;
+  font-weight: lighter;
+  font-size: .8em;
+  color: #999;
+}
+
+.connexion-background .modal .modal-or::before, .connexion-background .modal .modal-or::after,
+.inscription-background .modal .modal-or::before,
+.inscription-background .modal .modal-or::after {
+  content: '';
+  width: 100%;
+  margin: 5px 30px;
+  height: 1px;
+  background: #eee;
+}
+
+.connexion-background .modal .btn,
+.inscription-background .modal .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 8px;
+  text-decoration: none;
+  color: #303036;
+  border: 1px solid #eee;
+  margin: 20px 30px;
+  border-radius: 10px;
 }
 
 .bold {
@@ -479,6 +547,14 @@ body {
   color: #303036;
 }
 
+.primary {
+  color: #fc5130;
+}
+
+.secondary {
+  color: #30bced;
+}
+
 @-webkit-keyframes menuShow {
   from {
     opacity: 0;
@@ -500,6 +576,28 @@ body {
   }
   to {
     opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@-webkit-keyframes loginModal {
+  from {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+  }
+  to {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@keyframes loginModal {
+  from {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+  }
+  to {
     -webkit-transform: translateY(0px);
             transform: translateY(0px);
   }

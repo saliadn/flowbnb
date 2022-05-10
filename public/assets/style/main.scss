@@ -93,7 +93,9 @@ body {
          padding: 10px 0;
          width: 250px;
          flex-direction: column;
-         background: white;
+         // background: white; 
+         background: rgba($color: $bgColor, $alpha: .7); // effet blur
+         backdrop-filter: blur(15px); // effet blur
          border-radius: 5px;
          border: 1px solid #eee;
          position: absolute;
@@ -135,6 +137,7 @@ body {
                }
                &:hover {
                   background: #f6f6f6;
+                  background: rgba(white, 0.5);
                   a {
                      transform: translateX(5px);
                   }
@@ -152,6 +155,7 @@ body {
             hr {
                border: none;
                background: #eee;
+               background: rgba(black, 0.1);
                height: 1px;
                width: 100%;
                margin: 10px 0;
@@ -163,12 +167,20 @@ body {
 
 .connexion-background,
 .inscription-background {
+   display: none;
    position: absolute;
    top: 0;
    left: 0;
-   background: rgba($bgColorDark, 0.3);
+   background: rgba($bgColorDark, 0.8);
    width: 100vw;
    height: 100vh;
+   opacity: 0;
+   transition: all .3s ease;
+   &.opened {
+      opacity: 1;
+      display: block;
+      animation: menuShow .5s ease;
+   }
    .modal {
       position: absolute;
       top: 50%;
@@ -176,7 +188,7 @@ body {
       transform: translate(-50%, -50%);
       background: white;
       width: 500px;
-      height: 650px;
+      // height: 650px;
       border-radius: 10px;
       box-shadow: 2px 4px 16px rgba(0,0,0,.16);
       header {
@@ -203,6 +215,10 @@ body {
       }
       form {
          padding: 30px;
+         h3 {
+            font-weight: normal;
+            font-size: 120%;
+         }
       }
       .identifiants {
          display: flex;
@@ -262,14 +278,43 @@ body {
             height: 40px;
             font-weight: normal;
             border: none;
-            background: white;
+            background: $primaryColor;
+            color: white;
             cursor: pointer;
             transition: .2s ease;
 
             &:hover {
-               color: $primaryColor;
+               color: none;
             }
          }
+      }
+      .modal-or {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         line-height: 0px;
+         font-weight: lighter;
+         font-size: .8em;
+         color: #999;
+         &::before,
+         &::after {
+            content: '';
+            width: 100%;
+            margin: 5px 30px;
+            height: 1px;
+            background: #eee;
+         }
+      }
+      .btn {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: 8px;
+         text-decoration: none;
+         color: $bgColorDark;
+         border: 1px solid #eee;
+         margin: 20px 30px;
+         border-radius: 10px;
       }
    }
 }

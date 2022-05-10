@@ -1,3 +1,3 @@
 <div class="container">
-   <h1>Inscrivez-vous</h1>
+   <h1>Rejoignez Flowbnb dès maintenant, gratuitement.</h1>
 </div>
