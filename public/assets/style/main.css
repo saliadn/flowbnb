@@ -1,0 +1,507 @@
+@font-face {
+  font-family: Circular;
+  src: url(../fonts/circular/CircularStd-Light.otf);
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: Circular;
+  src: url(../fonts/circular/CircularStd-Book.otf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Circular;
+  src: url(../fonts/circular/CircularStd-Bold.otf);
+  font-weight: 900;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: Circular;
+  background: #fffaff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.navigation-header {
+  padding: 0 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 80px;
+}
+
+.navigation-header img {
+  height: 35px;
+}
+
+.navigation-header ul {
+  height: 100%;
+  white-space: nowrap;
+}
+
+.navigation-header li {
+  display: inline-block;
+  margin: 0 8px;
+  height: 100%;
+}
+
+.navigation-header li a.nav-links {
+  position: relative;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  color: #303036;
+}
+
+.navigation-header li a.nav-links:after {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background: #30bced;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.navigation-header li a.nav-links:hover::after {
+  width: 100%;
+}
+
+.navigation-header section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navigation-header section a.host {
+  margin-right: 10px;
+  padding: 7px 12px;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #303036;
+}
+
+.navigation-header section a.host:hover {
+  background: #eee;
+}
+
+.navigation-header section .member-icon {
+  width: 25px;
+  height: 25px;
+  padding: 1px;
+  border-radius: 50%;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
+  cursor: pointer;
+}
+
+.navigation-header section .member-icon.opened {
+  -webkit-box-shadow: 0 0 0 2px #fc5130;
+          box-shadow: 0 0 0 2px #fc5130;
+}
+
+.navigation-header section .member-icon:hover {
+  -webkit-box-shadow: 0 0 0 2px #fc5130;
+          box-shadow: 0 0 0 2px #fc5130;
+}
+
+.navigation-header section .member-icon img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.navigation-header section .menu {
+  z-index: 99;
+  display: none;
+  opacity: 0;
+  padding: 10px 0;
+  width: 250px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  position: absolute;
+  right: 73px;
+  top: 60px;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  -webkit-animation: menuShow .3s ease;
+          animation: menuShow .3s ease;
+}
+
+.navigation-header section .menu.opened {
+  opacity: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navigation-header section .menu .close {
+  font-size: 20px;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  z-index: 99;
+  position: absolute;
+  top: 0px;
+  right: -25px;
+  color: #aaa;
+  float: right;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.navigation-header section .menu .close:hover {
+  color: black;
+}
+
+.navigation-header section .menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.navigation-header section .menu ul li {
+  margin: 0;
+  font-weight: 200;
+}
+
+.navigation-header section .menu ul li a {
+  padding: 10px;
+  padding-left: 20px;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.navigation-header section .menu ul li:hover {
+  background: #f6f6f6;
+}
+
+.navigation-header section .menu ul li:hover a {
+  -webkit-transform: translateX(5px);
+          transform: translateX(5px);
+}
+
+.navigation-header section .menu ul li:first-child {
+  font-weight: 500;
+}
+
+.navigation-header section .menu ul li a {
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  color: #303036;
+}
+
+.navigation-header section .menu ul hr {
+  border: none;
+  background: #eee;
+  height: 1px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.connexion-background,
+.inscription-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(48, 48, 54, 0.3);
+  width: 100vw;
+  height: 100vh;
+}
+
+.connexion-background .modal,
+.inscription-background .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: white;
+  width: 500px;
+  height: 650px;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.16);
+          box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.16);
+}
+
+.connexion-background .modal header,
+.inscription-background .modal header {
+  position: relative;
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.connexion-background .modal header span,
+.inscription-background .modal header span {
+  position: absolute;
+  left: 20px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+}
+
+.connexion-background .modal header span:hover,
+.inscription-background .modal header span:hover {
+  background: #f9f9f9;
+  border-radius: 50%;
+}
+
+.connexion-background .modal hr,
+.inscription-background .modal hr {
+  opacity: .3;
+}
+
+.connexion-background .modal form,
+.inscription-background .modal form {
+  padding: 30px;
+}
+
+.connexion-background .modal .identifiants,
+.inscription-background .modal .identifiants {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 0 1px #eee;
+          box-shadow: 0 0 0 1px #eee;
+  position: relative;
+}
+
+.connexion-background .modal .identifiants span.valid,
+.connexion-background .modal .identifiants span.invalid,
+.inscription-background .modal .identifiants span.valid,
+.inscription-background .modal .identifiants span.invalid {
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  font-size: .8em;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  font-weight: 200;
+}
+
+.connexion-background .modal .identifiants span.valid,
+.inscription-background .modal .identifiants span.valid {
+  opacity: 0;
+  color: #30bced;
+}
+
+.connexion-background .modal .identifiants span.invalid,
+.inscription-background .modal .identifiants span.invalid {
+  opacity: .3;
+}
+
+.connexion-background .modal .identifiants input[type=email],
+.connexion-background .modal .identifiants input[type=password],
+.inscription-background .modal .identifiants input[type=email],
+.inscription-background .modal .identifiants input[type=password] {
+  background: #F6F6F6;
+  font-family: Circular;
+  font-weight: 200;
+  padding-left: 15px;
+  font-size: 1em;
+  height: 40px;
+  outline: none;
+  border: none;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
+  color: black;
+}
+
+.connexion-background .modal .identifiants input[type=email]:focus,
+.connexion-background .modal .identifiants input[type=password]:focus,
+.inscription-background .modal .identifiants input[type=email]:focus,
+.inscription-background .modal .identifiants input[type=password]:focus {
+  height: 50px;
+  background: #f0f0f0;
+}
+
+.connexion-background .modal .identifiants input[type=email]:first-child,
+.connexion-background .modal .identifiants input[type=password]:first-child,
+.inscription-background .modal .identifiants input[type=email]:first-child,
+.inscription-background .modal .identifiants input[type=password]:first-child {
+  border-bottom: 1px solid #eee;
+}
+
+.connexion-background .modal .identifiants input[type=email]:valid ~ span.valid,
+.connexion-background .modal .identifiants input[type=password]:valid ~ span.valid,
+.inscription-background .modal .identifiants input[type=email]:valid ~ span.valid,
+.inscription-background .modal .identifiants input[type=password]:valid ~ span.valid {
+  opacity: 1;
+}
+
+.connexion-background .modal .identifiants input[type=email]:valid ~ span.invalid,
+.connexion-background .modal .identifiants input[type=password]:valid ~ span.invalid,
+.inscription-background .modal .identifiants input[type=email]:valid ~ span.invalid,
+.inscription-background .modal .identifiants input[type=password]:valid ~ span.invalid {
+  opacity: 0;
+}
+
+.connexion-background .modal .identifiants input[type=submit],
+.inscription-background .modal .identifiants input[type=submit] {
+  font-family: Circular;
+  font-size: 1em;
+  height: 40px;
+  font-weight: normal;
+  border: none;
+  background: white;
+  cursor: pointer;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
+}
+
+.connexion-background .modal .identifiants input[type=submit]:hover,
+.inscription-background .modal .identifiants input[type=submit]:hover {
+  color: #fc5130;
+}
+
+.bold {
+  font-weight: 900;
+}
+
+.regular {
+  font-weight: 500;
+}
+
+.container {
+  padding: 25px 80px;
+}
+
+.jcc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.big-card {
+  position: relative;
+  padding: 100px;
+  text-align: center;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.big-card img {
+  top: 0;
+  left: 0;
+  position: absolute;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.big-card h2 {
+  font-size: 2.8em;
+  font-weight: bold;
+  color: #303036;
+  color: white;
+}
+
+.hover-zoom {
+  -webkit-transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
+  transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
+}
+
+.hover-zoom:hover {
+  -webkit-transform: scale3d(1.005, 1.005, 1.005);
+          transform: scale3d(1.005, 1.005, 1.005);
+  -webkit-box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.16);
+          box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.16);
+}
+
+.bg-dark {
+  background: #303036;
+}
+
+.bg-black {
+  background: black;
+}
+
+.dark {
+  color: #303036;
+}
+
+@-webkit-keyframes menuShow {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@keyframes menuShow {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+/*# sourceMappingURL=main.css.map */
