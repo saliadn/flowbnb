@@ -7,86 +7,111 @@ imgs.forEach(element => {
    element.setAttribute('draggable', false)
 });
 
+// - - - - - - user menu 
 const memberIcon = document.querySelector('.member-icon');
 const menu = document.querySelector('.menu');
 const menuCloseBtn = document.querySelector('.close');
-
 memberIcon.onclick = function() {
-   menu.classList.add('opened');
-   this.classList.add('opened');
+   userMenu('open');
 }
 menuCloseBtn.onclick = function() {
-   menu.classList.remove('opened');
-   memberIcon.classList.remove('opened');
+   userMenu('close');
 }
 
-// modal login et signup
+// - - - - - - modal login et signup
 const modalLogin = document.querySelector('.connexion-background');
-const modalLoginCloseBtn = document.querySelector('.connexion-background .modal .close');
-
 const modalSignup = document.querySelector('.inscription-background');
-const modalSignupCloseBtn = document.querySelector('.inscription-background .modal .close');
+const modalDisconnect = document.querySelector('.disconnect-background');
 
-const signupBtn = document.querySelector('#signup');
-const loginBtn = document.querySelector('#login');
 
-signupBtn.onclick = function() {
-   modalSignup.classList.add('opened');
-   menu.classList.remove('opened');
-   memberIcon.classList.remove('opened');
-}
-loginBtn.onclick = function() {
-   modalLogin.classList.add('opened');
-   menu.classList.remove('opened');
-   memberIcon.classList.remove('opened');
-}
-
-modalSignupCloseBtn.onclick = function() {
-   modalSignup.classList.remove('opened')
-}
-modalLoginCloseBtn.onclick = function() {
-   modalLogin.classList.remove('opened');
+// Close modals when clicking outside
+window.onclick = function(event) {
+   if(event.target == modalLogin) {
+      loginModal('close');
+   }
+   if(event.target == modalSignup) {
+      signupModal('close');
+   }
+   if(event.target == modalDisconnect) {
+      disconnectModal('close');
+   }
 }
 
 
-// control signup email
+// - - - - - - Emails et passwords Inputs 
 const email = document.querySelector('.inscription-background input[name=email]');
 const confirm_email = document.querySelector('.inscription-background input[name=confirm_email]');
-// control signup password 
 const password = document.querySelector('.inscription-background input[name=password]');
 const confirm_password = document.querySelector('.inscription-background input[name=confirm_password]');
-
 const signupSubmitBtn = document.querySelector('.inscription-background input[type=submit]');
 
+
+const tooltip = tippy(document.querySelector('#signupBtn'));
+tooltip.setProps({
+   'arrow': false,
+   'placement': 'top',
+})
+tooltip.setContent("Vous devez d'abord remplir tous les champs. 🤣");
+
+// - - - - - - CHECK EMAIL ET PASSWORD
 confirm_email.addEventListener('keyup', function() {
    if(email.value != '' && confirm_email.value != '' && email.value === confirm_email.value) {
-      console.log('email OK');
+      console.log('email matchs');
       confirm_password.addEventListener('keyup', function() {
          if(password.value != '' && confirm_password.value != '' && password.value === confirm_password.value) {
-            console.log('mot de passe OK');
-            signupSubmitBtn.classList.remove('disabled');
+            console.log('passwords matchs');
+            signupSubmitBtn.removeAttribute('disabled');
+            tooltip.setContent('Tout à l\'air d\'être bon, cliquez pour valider !')
          } else {
-            console.log('mot de passe KO');
-            signupSubmitBtn.classList.add('disabled');
+            console.log('passwords does not match');
+            signupSubmitBtn.setAttribute('disabled', '');
          }
       });
    } else {
-      console.log('email KO');
+      console.log('email does not match');
+      signupSubmitBtn.classList.add('disabled');
    }
 })
 
-confirm_password.addEventListener('keyup', function() {
-   if(password.value === confirm_password.value) {
-      signupSubmitBtn.removeAttribute('disabled');
+
+
+// - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - FUNCTIONS - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - -
+
+function userMenu(toggle) {
+   if(toggle === 'open') {
+      menu.classList.add('opened');
+      memberIcon.classList.add('opened');
    } else {
-      signupSubmitBtn.setAttribute('disabled', '');
+      menu.classList.remove('opened');
+      memberIcon.classList.remove('opened');
    }
-})
-
-tippy('#signupBtn', {
-   content: 'Valide le formulaire d\'abord !',
-   placement: 'top',
-   arrow: false,
-});
-
-tippy('[data-tippy-content]');
+}
+function signupModal(toggle) {
+   if (toggle == 'open') {
+      modalSignup.classList.add('opened');
+      menu.classList.remove('opened');
+      memberIcon.classList.remove('opened');
+   } else {
+      modalSignup.classList.remove('opened')
+   }
+}
+function loginModal(toggle) {
+   if(toggle === 'open') {
+      modalLogin.classList.add('opened');
+      menu.classList.remove('opened');
+      memberIcon.classList.remove('opened');
+   } else {
+      modalLogin.classList.remove('opened');
+   }
+}
+function disconnectModal(toggle) {
+   if(toggle == 'open') {
+      modalDisconnect.classList.add('opened');
+      menu.classList.remove('opened');
+      memberIcon.classList.remove('opened');
+   } else {
+      modalDisconnect.classList.remove('opened');
+   }
+}

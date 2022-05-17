@@ -58,6 +58,7 @@
 }
 .bg-secondary {
    background: $secondaryColor !important;
+   color: white !important;
 }
 
 .dark {
@@ -72,4 +73,31 @@
 
 .ucfirst {
    text-transform: capitalize;
+}
+
+.connected, .disconnected {
+   position: absolute;
+   top: 5px;
+   right: 80px;
+   &.green {
+      color: green;
+   }
+   &.red {
+      color: crimson;
+   }
+}
+
+
+.error {
+   margin-top: 20px;
+   margin-bottom: 0px;
+   color: orange;
+   border: 1px solid orange;
+   background: rgba(orange, .1);
+   padding: 10px;
+   border-radius: 7px;
+   a {
+      color: $bgColorDark;
+      opacity: .6;
+   }
 }

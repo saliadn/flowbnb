@@ -110,7 +110,7 @@ body {
 }
 
 .navigation-header section a.host:hover {
-  background: #eee;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .navigation-header section .member-icon {
@@ -150,10 +150,10 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   background: rgba(255, 250, 255, 0.7);
-  -webkit-backdrop-filter: blur(15px);
-          backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   border-radius: 5px;
-  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   position: absolute;
   right: 73px;
   top: 60px;
@@ -183,6 +183,9 @@ body {
   float: right;
   cursor: pointer;
   font-weight: bold;
+  -webkit-animation: closeBtn .3s ease .2s forwards;
+          animation: closeBtn .3s ease .2s forwards;
+  opacity: 0;
 }
 
 .navigation-header section .menu .close:hover {
@@ -213,7 +216,7 @@ body {
 
 .navigation-header section .menu ul li:hover {
   background: #f6f6f6;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .navigation-header section .menu ul li:hover a {
@@ -234,15 +237,15 @@ body {
 
 .navigation-header section .menu ul hr {
   border: none;
-  background: #eee;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.05);
   height: 1px;
   width: 100%;
   margin: 10px 0;
 }
 
 .connexion-background,
-.inscription-background {
+.inscription-background,
+.disconnect-background {
   display: none;
   position: absolute;
   top: 0;
@@ -256,7 +259,8 @@ body {
 }
 
 .connexion-background.opened,
-.inscription-background.opened {
+.inscription-background.opened,
+.disconnect-background.opened {
   opacity: 1;
   display: block;
   -webkit-animation: menuShow .5s ease;
@@ -264,13 +268,14 @@ body {
 }
 
 .connexion-background .modal,
-.inscription-background .modal {
+.inscription-background .modal,
+.disconnect-background .modal {
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background: white;
+  background: #fffaff;
   width: 500px;
   border-radius: 10px;
   -webkit-box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.16);
@@ -278,7 +283,8 @@ body {
 }
 
 .connexion-background .modal header,
-.inscription-background .modal header {
+.inscription-background .modal header,
+.disconnect-background .modal header {
   position: relative;
   padding: 25px;
   display: -webkit-box;
@@ -290,7 +296,8 @@ body {
 }
 
 .connexion-background .modal header span,
-.inscription-background .modal header span {
+.inscription-background .modal header span,
+.disconnect-background .modal header span {
   position: absolute;
   left: 20px;
   cursor: pointer;
@@ -302,23 +309,27 @@ body {
 }
 
 .connexion-background .modal header span:hover,
-.inscription-background .modal header span:hover {
-  background: #f9f9f9;
+.inscription-background .modal header span:hover,
+.disconnect-background .modal header span:hover {
+  background: rgba(0, 0, 0, 0.05);
   border-radius: 50%;
 }
 
 .connexion-background .modal hr,
-.inscription-background .modal hr {
+.inscription-background .modal hr,
+.disconnect-background .modal hr {
   opacity: .3;
 }
 
 .connexion-background .modal form,
-.inscription-background .modal form {
+.inscription-background .modal form,
+.disconnect-background .modal form {
   padding: 30px;
 }
 
 .connexion-background .modal form h3,
-.inscription-background .modal form h3 {
+.inscription-background .modal form h3,
+.disconnect-background .modal form h3 {
   font-weight: normal;
   font-size: 120%;
   padding: 15px 0;
@@ -326,7 +337,8 @@ body {
 }
 
 .connexion-background .modal .identifiants,
-.inscription-background .modal .identifiants {
+.inscription-background .modal .identifiants,
+.disconnect-background .modal .identifiants {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -337,21 +349,24 @@ body {
   border-radius: 10px;
   border-radius: 10px;
   overflow: hidden;
-  -webkit-box-shadow: 0 0 0 1px #eee;
-          box-shadow: 0 0 0 1px #eee;
+  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   position: relative;
   margin-bottom: 10px;
 }
 
 .connexion-background .modal .identifiants:last-child,
-.inscription-background .modal .identifiants:last-child {
+.inscription-background .modal .identifiants:last-child,
+.disconnect-background .modal .identifiants:last-child {
   margin-bottom: 0px;
 }
 
 .connexion-background .modal .identifiants span.valid,
 .connexion-background .modal .identifiants span.invalid,
 .inscription-background .modal .identifiants span.valid,
-.inscription-background .modal .identifiants span.invalid {
+.inscription-background .modal .identifiants span.invalid,
+.disconnect-background .modal .identifiants span.valid,
+.disconnect-background .modal .identifiants span.invalid {
   position: absolute;
   right: 7px;
   top: 5px;
@@ -362,13 +377,15 @@ body {
 }
 
 .connexion-background .modal .identifiants span.valid,
-.inscription-background .modal .identifiants span.valid {
+.inscription-background .modal .identifiants span.valid,
+.disconnect-background .modal .identifiants span.valid {
   opacity: 0;
   color: #30bced;
 }
 
 .connexion-background .modal .identifiants span.invalid,
-.inscription-background .modal .identifiants span.invalid {
+.inscription-background .modal .identifiants span.invalid,
+.disconnect-background .modal .identifiants span.invalid {
   opacity: .3;
 }
 
@@ -379,8 +396,12 @@ body {
 .inscription-background .modal .identifiants input[type=text],
 .inscription-background .modal .identifiants input[type=email],
 .inscription-background .modal .identifiants input[type=tel],
-.inscription-background .modal .identifiants input[type=password] {
-  background: #F6F6F6;
+.inscription-background .modal .identifiants input[type=password],
+.disconnect-background .modal .identifiants input[type=text],
+.disconnect-background .modal .identifiants input[type=email],
+.disconnect-background .modal .identifiants input[type=tel],
+.disconnect-background .modal .identifiants input[type=password] {
+  background: rgba(0, 0, 0, 0.05);
   font-family: Circular;
   font-weight: normal;
   padding-left: 15px;
@@ -400,8 +421,12 @@ body {
 .inscription-background .modal .identifiants input[type=text]:focus,
 .inscription-background .modal .identifiants input[type=email]:focus,
 .inscription-background .modal .identifiants input[type=tel]:focus,
-.inscription-background .modal .identifiants input[type=password]:focus {
-  background: #f0f0f0;
+.inscription-background .modal .identifiants input[type=password]:focus,
+.disconnect-background .modal .identifiants input[type=text]:focus,
+.disconnect-background .modal .identifiants input[type=email]:focus,
+.disconnect-background .modal .identifiants input[type=tel]:focus,
+.disconnect-background .modal .identifiants input[type=password]:focus {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .connexion-background .modal .identifiants input[type=text]:first-child,
@@ -411,8 +436,12 @@ body {
 .inscription-background .modal .identifiants input[type=text]:first-child,
 .inscription-background .modal .identifiants input[type=email]:first-child,
 .inscription-background .modal .identifiants input[type=tel]:first-child,
-.inscription-background .modal .identifiants input[type=password]:first-child {
-  border-bottom: 1px solid #eee;
+.inscription-background .modal .identifiants input[type=password]:first-child,
+.disconnect-background .modal .identifiants input[type=text]:first-child,
+.disconnect-background .modal .identifiants input[type=email]:first-child,
+.disconnect-background .modal .identifiants input[type=tel]:first-child,
+.disconnect-background .modal .identifiants input[type=password]:first-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .connexion-background .modal .identifiants input[type=text]:valid ~ span.valid,
@@ -422,7 +451,11 @@ body {
 .inscription-background .modal .identifiants input[type=text]:valid ~ span.valid,
 .inscription-background .modal .identifiants input[type=email]:valid ~ span.valid,
 .inscription-background .modal .identifiants input[type=tel]:valid ~ span.valid,
-.inscription-background .modal .identifiants input[type=password]:valid ~ span.valid {
+.inscription-background .modal .identifiants input[type=password]:valid ~ span.valid,
+.disconnect-background .modal .identifiants input[type=text]:valid ~ span.valid,
+.disconnect-background .modal .identifiants input[type=email]:valid ~ span.valid,
+.disconnect-background .modal .identifiants input[type=tel]:valid ~ span.valid,
+.disconnect-background .modal .identifiants input[type=password]:valid ~ span.valid {
   opacity: 1;
 }
 
@@ -433,12 +466,23 @@ body {
 .inscription-background .modal .identifiants input[type=text]:valid ~ span.invalid,
 .inscription-background .modal .identifiants input[type=email]:valid ~ span.invalid,
 .inscription-background .modal .identifiants input[type=tel]:valid ~ span.invalid,
-.inscription-background .modal .identifiants input[type=password]:valid ~ span.invalid {
+.inscription-background .modal .identifiants input[type=password]:valid ~ span.invalid,
+.disconnect-background .modal .identifiants input[type=text]:valid ~ span.invalid,
+.disconnect-background .modal .identifiants input[type=email]:valid ~ span.invalid,
+.disconnect-background .modal .identifiants input[type=tel]:valid ~ span.invalid,
+.disconnect-background .modal .identifiants input[type=password]:valid ~ span.invalid {
   opacity: 0;
 }
 
+.connexion-background .modal .identifiants span input[type=submit],
+.inscription-background .modal .identifiants span input[type=submit],
+.disconnect-background .modal .identifiants span input[type=submit] {
+  width: 100%;
+}
+
 .connexion-background .modal .identifiants input[type=submit],
-.inscription-background .modal .identifiants input[type=submit] {
+.inscription-background .modal .identifiants input[type=submit],
+.disconnect-background .modal .identifiants input[type=submit] {
   font-family: Circular;
   font-size: 1em;
   height: 40px;
@@ -452,20 +496,23 @@ body {
   transition: .2s ease;
 }
 
-.connexion-background .modal .identifiants input[type=submit].disabled,
-.inscription-background .modal .identifiants input[type=submit].disabled {
-  background: #eee !important;
+.connexion-background .modal .identifiants input[type=submit][disabled],
+.inscription-background .modal .identifiants input[type=submit][disabled],
+.disconnect-background .modal .identifiants input[type=submit][disabled] {
+  background: rgba(0, 0, 0, 0.05) !important;
   color: #999;
   cursor: default;
 }
 
 .connexion-background .modal .identifiants input[type=submit]:hover,
-.inscription-background .modal .identifiants input[type=submit]:hover {
+.inscription-background .modal .identifiants input[type=submit]:hover,
+.disconnect-background .modal .identifiants input[type=submit]:hover {
   color: none;
 }
 
 .connexion-background .modal .modal-or,
-.inscription-background .modal .modal-or {
+.inscription-background .modal .modal-or,
+.disconnect-background .modal .modal-or {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -483,7 +530,9 @@ body {
 
 .connexion-background .modal .modal-or::before, .connexion-background .modal .modal-or::after,
 .inscription-background .modal .modal-or::before,
-.inscription-background .modal .modal-or::after {
+.inscription-background .modal .modal-or::after,
+.disconnect-background .modal .modal-or::before,
+.disconnect-background .modal .modal-or::after {
   content: '';
   width: 100%;
   margin: 5px 30px;
@@ -492,7 +541,8 @@ body {
 }
 
 .connexion-background .modal .btn,
-.inscription-background .modal .btn {
+.inscription-background .modal .btn,
+.disconnect-background .modal .btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -585,6 +635,7 @@ body {
 
 .bg-secondary {
   background: #30bced !important;
+  color: white !important;
 }
 
 .dark {
@@ -601,6 +652,35 @@ body {
 
 .ucfirst {
   text-transform: capitalize;
+}
+
+.connected, .disconnected {
+  position: absolute;
+  top: 5px;
+  right: 80px;
+}
+
+.connected.green, .disconnected.green {
+  color: green;
+}
+
+.connected.red, .disconnected.red {
+  color: crimson;
+}
+
+.error {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  color: orange;
+  border: 1px solid orange;
+  background: rgba(255, 165, 0, 0.1);
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.error a {
+  color: #303036;
+  opacity: .6;
 }
 
 @-webkit-keyframes menuShow {
@@ -648,6 +728,30 @@ body {
   to {
     -webkit-transform: translateY(0px);
             transform: translateY(0px);
+  }
+}
+
+@-webkit-keyframes closeBtn {
+  0% {
+    -webkit-transform: translateX(20px);
+            transform: translateX(20px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes closeBtn {
+  0% {
+    -webkit-transform: translateX(20px);
+            transform: translateX(20px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=main.css.map */
